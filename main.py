@@ -3,7 +3,6 @@ from datetime import datetime
 from time import sleep
 from pytz import timezone
 from instagrapi import Client
-import json
 
 response = requests.get("https://svatkyapi.cz/api/day").json()
 svatek = response["name"]
