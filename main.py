@@ -4,12 +4,6 @@ from time import sleep
 from pytz import timezone
 from instagrapi import Client
 
-response = requests.get("https://svatkyapi.cz/api/day").json()
-svatek = response["name"]
-day_number = response["dayNumber"]
-day_week = response["dayInWeek"]
-month = response["month"]["genitive"]
-
 username = ""
 password = ""
 
@@ -31,6 +25,12 @@ def update_bio(line1,line2):
 
 while True:
     if check_time():
+        response = requests.get("https://svatkyapi.cz/api/day").json()
+        svatek = response["name"]
+        day_number = response["dayNumber"]
+        day_week = response["dayInWeek"]
+        month = response["month"]["genitive"]
+
         line1 = "📅 Dnes je "+day_week+", "+day_number+". "+month
         line2 = "🎀 Svátek má "+svatek
         update_bio(line1,line2)
